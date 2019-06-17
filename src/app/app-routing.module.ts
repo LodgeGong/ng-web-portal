@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { AssembleComponent } from './assemble/assemble.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'main/assemble', pathMatch: 'full' },
-  { path: 'main', loadChildren: './layout#LayoutModule' }
-  // { path: 'main', component: AssembleComponent }
+  { path: 'layout', loadChildren: './layout#LayoutModule' },
+  { path: '', redirectTo: 'layout', pathMatch: 'full' },
+  { path: '**', component:PageNotFoundComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      { enableTracing: true }   // <-- debugging purposes only
+    )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
