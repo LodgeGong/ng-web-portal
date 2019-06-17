@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssembleComponent } from './assemble.component';
+import { HomeCenterComponent } from './home-center.component';
 
-describe('AssembleComponent', () => {
-  let component: AssembleComponent;
-  let fixture: ComponentFixture<AssembleComponent>;
+describe('HomeCenterComponent', () => {
+  let component: HomeCenterComponent;
+  let fixture: ComponentFixture<HomeCenterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssembleComponent ]
+      declarations: [ HomeCenterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AssembleComponent);
+    fixture = TestBed.createComponent(HomeCenterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

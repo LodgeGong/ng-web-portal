@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'layout', loadChildren: './layout#LayoutModule' },
-  { path: '', redirectTo: 'layout', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', loadChildren:'./home/home.module#HomeModule'},
   { path: '**', component:PageNotFoundComponent}
 ];
 
