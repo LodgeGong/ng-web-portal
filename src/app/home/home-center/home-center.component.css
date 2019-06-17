@@ -1,0 +1,33 @@
+.home-center-background {
+    height:980px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('~/assets/images/background-aver.jpg');
+    background-position: 50% 50%; 
+    background-attachment:fixed;
+}
+
+.select-entrance {
+    width: 450px;
+    height: 300px;
+    /*水平居中*/
+    margin:0 auto;
+    /*垂直居中*/      
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top:-150px;
+    margin-left: -225px; 
+}
+.choose-module {
+    width: 33.3%;
+    height: 100%;
+    float: left;
+    opacity: 0.8;
+    cursor: pointer;
+    text-align: center;
+}
+.choose-module-span{
+    font-size: larger;
+    margin-top: 50px;
+}

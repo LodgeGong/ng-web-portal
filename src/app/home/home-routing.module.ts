@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { CalendarComponent } from './calendar/calendar.component';
 import { HomeCenterComponent } from './home-center/home-center.component';
+import { BlogComponent } from './blog/blog.component';
+import { FutureComponent } from './future/future.component';
 
 const routes: Routes = [
   {
@@ -10,7 +12,9 @@ const routes: Routes = [
     component:HomeComponent,
     children:[
       {path:'',component:HomeCenterComponent},
-      {path:'todolist',component:ToDoListComponent}
+      {path:'calendar',component:CalendarComponent},
+      {path:'blog',component:BlogComponent},
+      {path:'future',component:FutureComponent}
     ]
   }
 ];
