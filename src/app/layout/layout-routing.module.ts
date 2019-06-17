@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout.component';
+import { AssembleComponent } from './assemble/assemble.component';
 
 const routes: Routes = [
-  {
-    path: '', component: LayoutComponent, children: [
-      // { path: 'preview', loadChildren: '../preview#PreviewModule' },
-      { path: 'assemble', loadChildren: '../assemble#AssembleModule' }
-    ]
-  }
+  { path: ':id', component: AssembleComponent, children: [] },
 ]
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild(routes)
+  ],
+  exports: [RouterModule]
 })
 export class LayoutRoutingModule { }
