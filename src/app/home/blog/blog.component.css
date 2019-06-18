@@ -1,0 +1,18 @@
+.blog-left-side {
+    float: left;
+    width: 30%;
+    height: 920px;
+    background-color: #DCDCDC;
+    border-right: 1px solid black;
+}
+.blog-left-side li {
+    line-height: 2em;
+}
+
+.blog-right-side {
+    float: right;
+}
+.blog-title {
+    margin: 20px;
+    text-align: center;
+}

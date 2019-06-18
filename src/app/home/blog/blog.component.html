@@ -1,3 +1,15 @@
-<p>
-  blog works!
-</p>
+<div>
+  <!-- 左边历史文章 -->
+  <div class="blog-left-side">
+    <div class="blog-title">
+      目录标题
+    </div>
+    <div>
+      <li *ngFor="let title of titles; index as i">
+        {{title}}
+      </li>
+    </div>
+  </div>
+  <!-- 右边新颖文章 -->
+  <div class="blog-right-side"></div>  
+</div>
