@@ -1,0 +1,15 @@
+.title {
+    text-align: center;
+}
+.calendar-table-content {
+    background-color:  #cd7bdd;
+    border:1px solid black;
+    width: 80%;
+}
+tr {
+    height: 100px;
+}
+td {
+    width: 150px;
+    text-align: center;
+}
