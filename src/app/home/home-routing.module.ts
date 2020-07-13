@@ -5,6 +5,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { HomeCenterComponent } from './home-center/home-center.component';
 import { BlogComponent } from './blog/blog.component';
 import { FutureComponent } from './future/future.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     component:HomeComponent,
     children:[
       {path:'',component:HomeCenterComponent},
+      {path:'login',component:LoginComponent},
       {path:'calendar',component:CalendarComponent},
       {path:'blog',component:BlogComponent},
       {path:'future',component:FutureComponent}

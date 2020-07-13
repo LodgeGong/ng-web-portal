@@ -14,4 +14,8 @@ export class BlogComponent implements OnInit {
   ngOnInit() {
   }
 
+  edit() {
+    alert('edit blog');
+  }
+
 }

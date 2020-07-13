@@ -1,0 +1,19 @@
+/* 登录 */
+.login-body {
+    text-align: center;
+}
+
+.login-error {
+    color: red;
+}
+
+.login-input {
+    margin: 10px auto;
+}
+.login-btn {
+    margin: 10px 20px;
+}
+/* 注册 */
+.regist-body {
+    text-align: center;
+}

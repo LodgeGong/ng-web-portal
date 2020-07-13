@@ -1,0 +1,53 @@
+
+<div class="login-content">
+  <div class="login-header">
+  </div>
+  <div class="login-body" *ngIf="!isRegist">
+    <div class="login-box-cont">
+      <div class="login-box">
+        <h1>Hello!</h1>
+        <h4>WELCOME TO HeLuo！</h4>
+        <div class="mt20">
+          <div class="login-input icon-user-name">
+            <input name="userName" [(ngModel)]="loginInfo.username" placeholder="请输入用户名" type="text"   #userNameInput>
+          </div>
+          <p class="login-error" *ngIf="errorType === 2">{{result}}</p>
+        </div>
+        <div class="mt10">
+          <div class="login-input icon-password">
+            <input placeholder="请输入密码" [(ngModel)]="loginInfo.password"  name="password" type="password" #passwordInput>
+          </div>
+          <p class="login-error" *ngIf="errorType === 3">{{result}}</p>
+        </div>
+        <button id="login" class="login-btn" (click)=submit() #submitButton >登录</button>
+        <button id="regist" class="login-btn " (click)=toggle() #registButton >切换</button>
+      </div>
+    </div>
+  </div>
+  <div class="regist-body" *ngIf="isRegist">
+    <h1>Hello!</h1>
+    <h4>WELCOME TO HeLuo！</h4>
+    <div class="mt20">
+      <div class="login-input icon-user-name">
+        <input name="userName" [(ngModel)]="loginInfo.username" placeholder="请输入用户名" type="text"   >
+      </div>
+      <p class="login-error" *ngIf="errorType === 4">{{result}}</p>
+    </div>
+    <div class="mt10">
+      <div class="login-input icon-password">
+        <input placeholder="请输入密码" [(ngModel)]="loginInfo.password"  name="password" type="password" >
+      </div>
+      <p class="login-error" *ngIf="errorType === 5">{{result}}</p>
+    </div>
+    <div class="mt20">
+      <div class="login-input icon-user-name">
+        <input name="mobile" [(ngModel)]="loginInfo.mobile" placeholder="请输手机号" type="text"   >
+      </div>
+      <p class="login-error" *ngIf="errorType === 6">{{result}}</p>
+    </div>
+    <button id="regist" class="login-btn" (click)=regist() >提交</button>
+    <button  class="login-btn" (click)=toggle()  >切换</button>
+  </div>
+  <p class="login-footer text-center">
+  </p>
+</div>
