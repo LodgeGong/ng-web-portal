@@ -2,7 +2,7 @@
     height:980px;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('~/assets/images/background-aver.jpg');
+    background-image:url('/assets/images/background-aver.jpg');
     background-position: 50% 50%; 
     background-attachment:fixed;
 }

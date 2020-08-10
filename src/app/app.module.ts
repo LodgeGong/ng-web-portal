@@ -9,6 +9,8 @@ import { AuthGuard } from './shared/auth.guard';
 import { LocalStorageService } from './shared/LocalStorageService.servcie';
 import { HttpService } from './shared/http.service';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FileUploadModule } from 'ng2-file-upload';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // 如果使用#类型路由，则无需再app中引入相关模块
 // import { HomeModule } from './home/home.module';
 
@@ -21,13 +23,15 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FileUploadModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,
     LocalStorageService,
     HttpService,
-    HttpClient
+    HttpClient,
   ],
   bootstrap: [AppComponent]
 })

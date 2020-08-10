@@ -9,13 +9,21 @@ import { HomeCenterComponent } from './home-center/home-center.component';
 import { BlogComponent } from './blog/blog.component';
 import { FutureComponent } from './future/future.component';
 import { LoginComponent } from './login/login.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
-  declarations: [HomeComponent, CalendarComponent, HomeCenterComponent, BlogComponent, FutureComponent, LoginComponent],
+  declarations: [
+    HomeComponent, 
+    CalendarComponent, 
+    HomeCenterComponent, 
+    BlogComponent, 
+    FutureComponent, 
+    LoginComponent],
   imports: [
     CommonModule,
     FormsModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    FileUploadModule
   ],
   providers:[]
 })

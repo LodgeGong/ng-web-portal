@@ -1,6 +1,6 @@
 .blog-header-top {
     width: 100%;
-    height: 60px;
+    height: 80px;
     background-color: #cd7bdd;
 }
 .blog-left-side {
@@ -9,6 +9,7 @@
     height: 920px;
     background-color: #DCDCDC;
     border-right: 1px solid black;
+    padding-left: 10px;
 }
 .blog-left-side li {
     line-height: 2em;
@@ -65,3 +66,48 @@
     text-align: center;
     padding-top: 10px;
 }
+
+#blog-comment h3 {
+    text-align: center;
+    border-bottom: 1px black solid;
+}
+
+.button-right {
+    float: right;
+}
+.blog-error {
+    color: red;
+}
+.blog-btn {
+    margin: 5px;
+}
+#blog-comment-outter {
+    /* border: 1px black solid; */
+    max-height: 800px;
+    position: relative;
+    top: 200px;
+}
+.blog-comment-content {
+    margin-left: 50px;
+}
+.blog-comment-title {
+    border-bottom: 1px dashed;
+    font-size: 23px;
+    font-style: italic;
+}
+.button-right {
+    float: right;
+}
+.btn-comment {
+    margin-left: 20px;
+}
+.comment-delete-x {
+    float: right;
+    cursor: pointer;
+    color: red;
+    font-size: 20px;
+}
+.comment-delete-x:hover {
+    color: blue;
+}
+

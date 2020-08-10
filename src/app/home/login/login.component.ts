@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   public errorType = 0;
   public isRegist:boolean = false;
 
-  public loginInfo: any = { 'username': '', 'password': '','mobile':''};
+  public loginInfo: any = { 'username': '', 'password': '','mobile':'','verification':''};
+  public imageCodeObejct: any = { 'hasImageCode': false, 'imageCodeUrl': 'http://localhost:18080/passport/refreshVerifCode', 'imageToken': '' };
   
   @ViewChild('userNameInput') userNameInput;
   @ViewChild('passwordInput') passwordInput;
@@ -27,6 +28,15 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.httpService.get("http://localhost:18080/passport/preLogin").subscribe(res => {
+      if (res.flag) {
+        this.imageCodeObejct.hasImageCode = res.data.needVerification;
+        this.imageCodeObejct.imageToken = res.data.token;
+        if (this.imageCodeObejct.hasImageCode) {
+          this.refreshVerifCode();
+        }
+      }
+    });
   }
 
 
@@ -41,6 +51,13 @@ export class LoginComponent implements OnInit {
     if (this.loginInfo.password === '') {
       this.result = '密码不能为空';
       this.errorType = 3;
+      this.passwordInput.nativeElement.focus();
+      return false;
+    }
+
+    if (this.loginInfo.verification === '') {
+      this.result = '验证码不能为空';
+      this.errorType = 7;
       this.passwordInput.nativeElement.focus();
       return false;
     }
@@ -72,11 +89,17 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (!this.checkValue()) return;
+    if (this.imageCodeObejct.hasImageCode) {
+      this.loginInfo.token = this.imageCodeObejct.imageToken;
+    }
     this.httpService.post("http://localhost:18080/passport/login",this.loginInfo).subscribe(data => {
       if (data.flag) {
         let userInfo = data.data;
         this.localStorageService.setLoginInfo(userInfo);
         this.router.navigate(['/home']);
+      }else{
+        this.result = '登录失败，请检查用户名密码！';
+        this.errorType = 1;
       }
     });
   }
@@ -96,5 +119,9 @@ export class LoginComponent implements OnInit {
     }else{
       this.isRegist = true;
     }
+  }
+
+  refreshVerifCode() {
+    this.imageCodeObejct.imageCodeUrl = 'http://localhost:18080/passport/refreshVerifCode?token=' + this.imageCodeObejct.imageToken + '&random=' + new Date().getTime();
   }
 }

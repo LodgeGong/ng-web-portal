@@ -19,6 +19,16 @@
           </div>
           <p class="login-error" *ngIf="errorType === 3">{{result}}</p>
         </div>
+        <div class="col-md-10 col-sm-10 col-xs-10" *ngIf="imageCodeObejct.hasImageCode">
+          <div class="login-input icon-code">
+            <input placeholder="请输入验证码" [(ngModel)]="loginInfo.verification">
+          </div>
+          <div class="code">
+            <img [src]="imageCodeObejct.imageCodeUrl" (click)="refreshVerifCode()"/>
+          </div>
+          <p class="login-error" *ngIf="errorType === 7">{{result}}</p>
+        </div>
+        <p class="login-error" *ngIf="errorType === 1">{{result}}</p>
         <button id="login" class="login-btn" (click)=submit() #submitButton >登录</button>
         <button id="regist" class="login-btn " (click)=toggle() #registButton >切换</button>
       </div>

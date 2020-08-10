@@ -25,8 +25,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -132,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "ng-web-portal"
+  "defaultProject": "ng-web-portal",
+  "cli": {
+    "analytics": false
+  }
 }

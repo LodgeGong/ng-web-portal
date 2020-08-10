@@ -1,6 +1,10 @@
 <div>
   <div class="blog-header-top">
     <div class="blog-header-box" >博客系统</div>
+    <button class="button-right" (click)="newBlog()">发博客</button>
+    <div>
+        <input ng2FileSelect type="file" name="image" [uploader]="uploader" (change)="selectedFileOnChanged($event)"/>
+    </div>
   </div>
   <!-- 左边文章目录 -->
   <div class="blog-left-side">
@@ -8,30 +12,77 @@
       目录标题
     </div>
     <div>
-      <li *ngFor="let title of titles; index as i">
-        <span class="blog-title" (click)=edit()>{{title}}</span>
+      <li *ngFor="let article of articles; index as i">
+        <span class="blog-title" (click)=showBlog(article)>{{article.title}}</span>
       </li>
+      <div *ngIf="!articles">
+        暂无数据
+      </div>
     </div>
   </div>
   <!-- 右边总体帖子 -->
   <div class="blog-right-side">
-    <div class="blog-header">
-      <span>标题: </span>
-      <input type="text"/>
-    </div>
-    <div class="blog-content">
-      <p>
-        正文:
-      </p>
-      
-    </div>
-    <div class="blog-input">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-        <div>
-          <button class="btn-blog-submit">
-            提交
-          </button>
+    <!-- 编辑页面 -->
+    <div *ngIf="isEditContent" id="blog-editor" >
+      <div class="blog-header">
+        <span>标题: </span>
+        <input type="text" [(ngModel)]="blogItem.blogTitle" />
+      </div>
+      <div  class="blog-content" >
+        <p>
+          正文:
+        </p>
+        <div class="blog-input">
+          <textarea style="width: 800px;" name="" id="" cols="70" rows="10" [(ngModel)]="blogItem.blogContent"></textarea>
+          <div>
+            <p class="blog-error" *ngIf="errorType === 1">{{errorMsg}}</p>
+            <button class="btn-blog-submit" (click)="submitBlog()">
+              提交
+            </button>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- 展示页面 -->
+    <div *ngIf="isShowArticle" id="blog-comment">
+      <div *ngIf="contents && isAuthor">
+        <button class="blog-btn" (click)="editBlog()">重新编辑</button>
+        <button class="blog-btn" (click)="deleteBlog()">删除</button>
+      </div>
+      <h3>{{selectTitle}}</h3>
+      <div>
+        <p *ngFor="let content of contents; index as i">
+          {{content}}
+        </p>
+      </div>
+      <!-- 评论区 -->
+      <div id="blog-comment-outter">
+        <p class="blog-comment-title">评论区：
+          <button class="button-right" (click)="isAddComment = true;">发评论</button>
+        </p>  
+        <div *ngIf="isAddComment">
+          <textarea name="" id="" cols="124" rows="10" #commentText></textarea>
+          <div>
+            <p class="blog-error" *ngIf="errorType === 2">{{commentErrorMsg}}</p>
+            <button class="btn-comment-submit btn-comment" (click)="subbmitComment(commentText.value)">
+              提交
+            </button>
+            <button class="btn-comment-cancel btn-comment" (click)="isAddComment=false;commentErrorMsg=''">
+              取消
+            </button>
+          </div>
+        </div>
+        <div *ngFor="let comment of commentItems">
+          <p>用户：{{comment.userName}}</p>
+          <div class="comment-delete-x" *ngIf="currentUser.id === comment.userId" (click)="deleteComment(comment)">x</div>
+          <div style="float: left;">评论：</div>
+          <p class="blog-comment-content" *ngFor="let cip of comment.ciList; index as i">
+            {{cip}}
+          </p>
+          <hr/>
+        </div>
+      </div>
     </div>
   </div>  
 </div>

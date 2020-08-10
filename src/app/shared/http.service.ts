@@ -35,12 +35,14 @@ export class HttpService {
       // let random = Math.floor(Math.random() * 1e4).toString();
       // let sign = `${timestamp}${random}`;
       // params = params.set('random', sign);
-      return this.http.get(root+url, { params: params });
+      return this.http.get(root+url, { params: params,withCredentials:true });
     }
 
     public post(url: string, data?: any, root?: string): Observable<any> {
         if (!root) root = this._root;
-        let headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let headers = new HttpHeaders({
+           'Content-Type': 'application/x-www-form-urlencoded'
+       });
         let body = new HttpParams();
         if (!!data) {
             if (!!data.forEach) {
@@ -53,7 +55,7 @@ export class HttpService {
                 }
             }
         }
-        return this.http.post(root+url, body, { headers:headers });
+        return this.http.post(root+url, body, { headers:headers,withCredentials:true });
     }
 
     public requestBuffer(url: string): Observable<HttpResponse<ArrayBuffer>> {
@@ -65,7 +67,7 @@ export class HttpService {
     if (root == null) root = this._root;
     const body = JSON.stringify(data);
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post(root + url, body, {headers : headers });
+    return this.http.post(root + url, body, {headers : headers ,withCredentials:true});
   }
 
   
